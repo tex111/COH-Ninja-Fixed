@@ -929,7 +929,7 @@ PowerSet Mastermind_Pets.Jonin
 	MinDifficulty 2
 	MaxDifficulty 9999
 
-	Powers Mastermind_Pets.Jonin.Aimed_Shot
+	Powers Mastermind_Pets.Jonin.Trick_Shot
 	Available 0
 	AIMaxLevel 0
 	AIMinRankCon -9999

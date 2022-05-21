@@ -380,46 +380,47 @@ Power Mastermind_Pets.Jonin.Slash
 	}
 }
 
-Power Mastermind_Pets.Jonin.Aimed_Shot
+Power Mastermind_Pets.Jonin.Trick_Shot
 {
-	Name                 "Aimed_Shot"                  
-	DisplayName          "P2060741548"
+	Name                 "Trick_Shot"                  
+	DisplayName          "P1901682939"
 	ModesDisallowed      kDisable_All
 	Type                 kClick
 	Accuracy             1
-	AttackTypes          kAoE_Attack, kLethal_Attack
+	AttackTypes          kMelee_Attack, kSmashing_Attack, kEnergy_Attack
 	EntsAffected         kFoe
 	EntsAutoHit          kNone
 	Target               kFoe
 	Range                70
-	EnduranceCost        15.184
+	EnduranceCost        10.192
 	IdeaCost             0
+	TravelSuppression    3
 	InterruptTime        0
 	TimeToActivate       1.07
-	RechargeTime         16
+	RechargeTime         10
 	ActivatePeriod       0
-	EffectArea           kSphere
-	Radius               10
+	EffectArea           kCharacter
+	Radius               0
 	Arc                  0
-	BoostsAllowed        kAccuracy_Boost, kDamage_Boost, kEnduranceDiscount_Boost, kRange_Boost
+	BoostsAllowed        kAccuracy_Boost, kDamage_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kRange_Boost
 	// Additional Power Factors
-	StrengthsDisallowed  kRechargeTime
-	VisualFX             "menu\Powers\AnimFX\Villain_Exploding_Shuriken.pfx"
-	include              menu\Powers\AnimFX\Villain_Exploding_Shuriken.pfx
-	DisplayShortHelp     "P735711430"
-	DisplayHelp          "P376346330"
-	IconName             "WeaponMastery_ExplodingShuriken.tga"
+	StrengthsDisallowed  kRange
+	VisualFX             "menu\Powers\AnimFX\PlayerPowers\MartialAssault_TrickShot.pfx"
+	include              menu\Powers\AnimFX\PlayerPowers\MartialAssault_TrickShot.pfx
+	DisplayShortHelp     "P1616644656"
+	DisplayHelp          "P1362532458"
+	IconName             "MartialAssault_TrickShot.tga"
 	TimeToConfirm        0
-	MaxTargetsHit        10
+	DisplayTargetHelp    "P3371105139"
 
 	AttribMod
 	{
 		Name                 "Damage"                      
-		Table                "Melee_Damage"                
+		Table                "Ranged_Damage"               
 		Aspect               kAbs
 		Attrib               kLethal
 		Target               kTarget
-		Scale                1
+		Scale                1.4
 		Type                 kMagnitude
 		AllowStrength        kTrue
 		AllowResistance      kTrue
@@ -430,34 +431,103 @@ Power Mastermind_Pets.Jonin.Aimed_Shot
 		Chance               1
 		NearGround           kFalse
 		CancelOnMiss         kFalse
-		DisplayAttackerHit   "P2552566898"
-		DisplayVictimHit     "P3862632471"
+		DisplayAttackerHit   "P860170444"
+		DisplayVictimHit     "P1083611728"
 		StackType            kStack
+	}
+	
+	AttribMod
+	{
+		Name                 "Damage"                      
+		Table                "Ranged_Damage"               
+		Aspect               kAbs
+		Attrib               kLethal
+		Target               kTarget
+		Scale                1.4
+		Type                 kMagnitude
+		AllowStrength        kTrue
+		AllowResistance      kTrue
+		Delay                0
+		Duration             0
+		Magnitude            1
+		Period               0
+		Chance               1
+		NearGround           kFalse
+		CancelOnMiss         kFalse
+		DisplayAttackerHit   "P860170444"
+		DisplayVictimHit     "P1083611728"
+		StackType            kStack
+		Requires             kMeter source> 0 >
+		DisplayFloat         "P2440464263"
 	}
 
 	AttribMod
 	{
-		Name                 "Damage"                      
-		Table                "Melee_Damage"                
-		Aspect               kAbs
-		Attrib               kLethal
+		Name                 "Ones"                        
+		Table                "Ranged_Ones"                 
+		Aspect               kCur
+		Attrib               kNull
 		Target               kTarget
 		Scale                1
 		Type                 kMagnitude
-		AllowStrength        kTrue
+		AllowStrength        kFalse
 		AllowResistance      kFalse
 		Delay                0
-		Duration             0
+		Duration             2
+		Magnitude            1
+		Period               0
+		Chance               1.0
+		NearGround           kFalse
+		CancelOnMiss         kFalse
+		StackType            kStack
+		ContinuingFX         PFX
+	}
+
+	AttribMod
+	{
+		Name                 "Ones"                        
+		Table                "Ranged_Ones"                 
+		Aspect               kCur
+		Attrib               kEntCreate
+		Target               kTarget
+		Scale                -1
+		Type                 kMagnitude
+		AllowStrength        kTrue
+		AllowResistance      kTrue
+		Delay                0
+		Duration             1
 		Magnitude            1
 		Period               0
 		Chance               1.00
 		NearGround           kFalse
 		CancelOnMiss         kFalse
-		DisplayAttackerHit   "P3728178801"
-		DisplayVictimHit     "P3994348305"
 		StackType            kStack
-		Requires             kMeter source> 0 >
-		DisplayFloat         "P2440464263"
+		EntityDef            Pets_Trick_Shot_Jump1
+		PriorityList         PL_Untargetable_FightPreferRanged
+		// Additional Power Attribs
+		KeepThroughDeath     kTrue
+	}
+
+	AttribMod
+	{
+		Name                 "Ones"                        
+		Table                "Ranged_Ones"                 
+		Aspect               kCur
+		Attrib               kSetMode
+		Target               kTarget
+		Scale                1
+		Type                 kConstant
+		AllowStrength        kFalse
+		AllowResistance      kFalse
+		Delay                0
+		Duration             4
+		Magnitude            kChain_Induction
+		Period               4.3
+		Chance               1
+		NearGround           kFalse
+		CancelOnMiss         kFalse
+		StackType            kIgnore
+		AllowCombatMods      kFalse
 	}
 }
 
